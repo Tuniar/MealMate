@@ -11,6 +11,7 @@ class MealList:
         str = ""
         for i in self.meals:
             str = str + i.name + "; "
+        return str
     def __repr__(self):
         meals = self.stringify_meals()
         return "You have the following meals in your recipe book: " + meals
@@ -64,7 +65,7 @@ class Pantry:
         for i in recipebook.meals:
             result = all(elem in i.ingredients for elem in self.ingredients)
             if result:
-                available_meals.append(i)
+                available_meals.append(i.name + "; ")
         return "The following meals can be cooked with your ingredients:" + str(available_meals)
 
 #Everything below this line is just for testing.
