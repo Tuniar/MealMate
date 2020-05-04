@@ -15,7 +15,7 @@ class MealList:
         meals = self.stringify_meals()
         return "You have the following meals in your recipe book: " + meals
 
-recipebook = MealList()
+recipebook = MealList() #The recipebook is user specific. For now (haven't added multi-user functions) only one is required for the programme to run for a single user.
 
 class Meal:
     def __init__(self, name, photo=None, description=None, instructions={}, ingredients=[]):
@@ -25,6 +25,7 @@ class Meal:
         self.instructions = instructions
         self.ingredients = ingredients
         print("{MEAL} created successfully.".format(MEAL=self.name))
+        # Creating a meal should automatically add it to the meal list per below.
         recipebook.add_meal(self)
     def add_ingredients(self, ingredients):
         for i in ingredients:
@@ -51,6 +52,8 @@ class Meal:
 class Ingredient:
     def __init__(self, name, emoji=None):
         self.name = name
+        #Emoji just an idea at this stage - would be nice to have visual representation for ingredients.
+        #Would have to be pushed centrally
         self.emoji = emoji
 
 class Pantry:
@@ -63,6 +66,8 @@ class Pantry:
             if result:
                 available_meals.append(i)
         return "The following meals can be cooked with your ingredients:" + str(available_meals)
+
+#Everything below this line is just for testing.
 
 bolognese = Meal(name="Bolognese", description="Lentil Bolognese using Merchant Gourmet lentils and tawny port")
 
